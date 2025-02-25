@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Search Results - Django App
+{% endblock %}
+
+{% block content %}
+    <h2>Search</h2>
+
+    <form>
+        <input type="text" name="q">
+        <button>Search</button>
+    </form>
+
+    {% if metadatas %}
+    Results: {{ metadatas|length }}
+    {% for meta in metadatas %}
+        <h1>User: {{ meta.user.username }}</h1>
+        <p><strong>Questions:</strong> {{ meta.questions|join:", " }}</p>
+        <p><strong>Session Info:</strong> {{ meta.session_info }}</p>
+        <p><strong>Last Updated:</strong> {{ meta.updated_at }}</p>
+        <br><br>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}
