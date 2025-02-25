@@ -9,7 +9,7 @@ def search_view(request):
     q = request.GET.get('q')
 
     if q:
-        vector = SearchVector('user__username')
+        vector = SearchVector('user__username', 'questions')
         query = SearchQuery(q)
 
         metadatas = UserMeta.objects.annotate(search=vector).filter(search=query)
