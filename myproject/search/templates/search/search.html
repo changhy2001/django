@@ -7,20 +7,78 @@
 {% block content %}
     <h2>Search</h2>
 
-    <form>
-        <input type="text" name="q">
-        <button>Search</button>
+    <!-- Search Form -->
+    <form method="GET" action="{% url 'search:search' %}">
+        <div class="form-row">
+            <!-- Search Query -->
+            <div class="form-group col-12">
+                <div class="input-group">
+                    <input class="form-control py-2 border-right-0 border" type="search" name="q" value="{{ request.GET.q }}" placeholder="Search users or questions...">
+                    <span class="input-group-append">
+                        <div class="input-group-text bg-transparent">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Options -->
+        <div class="form-row">
+            <!-- Username Filter -->
+            <div class="form-group col-md-3">
+                <input type="text" class="form-control" name="username_contains" value="{{ request.GET.username_contains }}" placeholder="Username contains...">
+            </div>
+
+            <!-- Questions Filter -->
+            <div class="form-group col-md-3">
+                <input type="text" class="form-control" name="questions_contains" value="{{ request.GET.questions_contains }}" placeholder="Question contains...">
+            </div>
+
+            <!-- Session Info Filter -->
+            <div class="form-group col-md-3">
+                <input type="text" class="form-control" name="session_info_contains" value="{{ request.GET.session_info_contains }}" placeholder="Session info contains...">
+            </div>
+        </div>
+
+        <!-- Date Range Filters -->
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="created_at_min" class="small-label">Created At (Min)</label>
+                <input type="date" class="form-control" id="created_at_min" name="created_at_min" value="{{ request.GET.created_at_min }}">
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="created_at_max" class="small-label">Created At (Max)</label>
+                <input type="date" class="form-control" id="created_at_max" name="created_at_max" value="{{ request.GET.created_at_max }}">
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="updated_at_min" class="small-label">Updated At (Min)</label>
+                <input type="date" class="form-control" id="updated_at_min" name="updated_at_min" value="{{ request.GET.updated_at_min }}">
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="updated_at_max" class="small-label">Updated At (Max)</label>
+                <input type="date" class="form-control" id="updated_at_max" name="updated_at_max" value="{{ request.GET.updated_at_max }}">
+            </div>
+        </div>
+
+        <!-- Search Button -->
+        <button type="submit" class="btn btn-primary btn-block">Search</button>
     </form>
 
+    <!-- Search Results -->
     {% if metadatas %}
-    Results: {{ metadatas|length }}
-    {% for meta in metadatas %}
-        <h1>User: {{ meta.user.username }}</h1>
-        <p><strong>Questions:</strong> {{ meta.questions|join:", " }}</p>
-        <p><strong>Session Info:</strong> {{ meta.session_info }}</p>
-        <p><strong>Last Updated:</strong> {{ meta.updated_at }}</p>
-        <br><br>
-    {% endfor %}
-{% endif %}
+        <p>Results: {{ metadatas|length }}</p>
+        {% for meta in metadatas %}
+            <h1>User: {{ meta.user.username }}</h1>
+            <p><strong>Questions:</strong> {{ meta.questions|join:", " }}</p>
+            <p><strong>Session Info:</strong> {{ meta.session_info }}</p>
+            <p><strong>Last Updated:</strong> {{ meta.updated_at }}</p>
+        {% endfor %}
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
 
 {% endblock %}

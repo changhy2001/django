@@ -109,3 +109,12 @@ a:hover {
 .logout-button:hover {
     opacity: .85;
 }
+
+.small-label {
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: #44B78B !important; /* Your custom color */
+    border-color: #44B78B !important;
+  }
