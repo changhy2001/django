@@ -1,0 +1,367 @@
+/*--------------------------------------------------------------
+  Base Reset & Global Styles
+--------------------------------------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --primary-color: #44B78B;
+    --accent-color: #81dbb8;
+    --error-color: #F00;
+    --background-color: black;
+    --text-color: whitesmoke;
+    --white: #fff;
+    --input-bg: #e9ecef;
+    --border-color: #ced4da;
+    --text-muted: #6c757d;
+  }
+  
+  html,
+  body {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  body {
+    min-height: 100vh;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 3rem;
+  }
+  
+  /*--------------------------------------------------------------
+    Layout Elements
+  --------------------------------------------------------------*/
+  nav {
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-size: 2.5rem;
+  }
+  
+  main,
+  .form-with-validation {
+    padding: 1rem;
+  }
+  
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Headings & Paragraphs */
+  h1,
+  h2 {
+    font-size: 2.5rem;
+  }
+  
+  p {
+    font-size: 1rem;
+  }
+  
+  /* Links */
+  a {
+    text-decoration: none;
+    color: var(--accent-color);
+  }
+  
+  a:hover {
+    opacity: 0.85;
+  }
+  
+  /* Images */
+  .banner {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  /*--------------------------------------------------------------
+    Forms & Input Styles
+  --------------------------------------------------------------*/
+  .form-with-validation {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-with-validation div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-with-validation input {
+    padding: 0.25rem;
+    max-width: 300px;
+  }
+  
+  .form-submit {
+    padding: 0.5rem;
+    border-radius: 10px;
+    width: 125px;
+    background-color: var(--primary-color);
+  }
+  
+  .helptext {
+    font-size: 1rem;
+    margin-left: 1rem;
+  }
+  
+  .helptext ul {
+    list-style-type: none;
+  }
+  
+  .errorlist {
+    color: var(--error-color);
+    margin-left: 2rem;
+  }
+  
+  .errorlist li::marker {
+    content: '🚨 ';
+  }
+  
+  /* Logout */
+  .logout {
+    display: inline-block;
+  }
+  
+  .logout-button {
+    font-size: 2.5rem;
+    background-color: transparent;
+    border: none;
+  }
+  
+  .logout-button:hover {
+    opacity: 0.85;
+  }
+  
+  .small-label {
+    font-size: 1rem;
+  }
+  
+  /*--------------------------------------------------------------
+    Buttons
+  --------------------------------------------------------------*/
+  .btn {
+    display: inline-block;
+    font-weight: 400;
+    color: var(--white);
+    text-align: center;
+    vertical-align: middle;
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  }
+  
+  .btn:hover {
+    background-color: #538773;
+    border-color: #538773;
+  }
+  
+  .btn-block {
+    display: block;
+    width: 100%;
+  }
+  
+  /*--------------------------------------------------------------
+    Input Group
+  --------------------------------------------------------------*/
+  .input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+  }
+  
+  .input-group > .form-control {
+    flex: 1 1 auto;
+    width: 1%;
+    margin-bottom: 0;
+  }
+  
+  .input-group-prepend,
+  .input-group-append {
+    display: flex;
+  }
+  
+  .input-group-text {
+    display: flex;
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    text-align: center;
+    white-space: nowrap;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+  }
+  
+  .input-group > .form-control.border-right-0 {
+    border-right: 0;
+  }
+  
+  /*--------------------------------------------------------------
+    Grid System
+  --------------------------------------------------------------*/
+  .form-row,
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+  
+  .form-row {
+    margin-right: -5px;
+    margin-left: -5px;
+  }
+  
+  .col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  
+  .col-md-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  
+  .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  
+  @media (min-width: 992px) {
+    .col-lg-4 {
+      flex: 0 0 33.3333%;
+      max-width: 33.3333%;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+  }
+  
+  /*--------------------------------------------------------------
+    Form Elements
+  --------------------------------------------------------------*/
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: var(--white);
+    background-clip: padding-box;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  /*--------------------------------------------------------------
+    Icons
+  --------------------------------------------------------------*/
+  .fa {
+    display: inline-block;
+    font-family: "FontAwesome";
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  .fa-search:before {
+    content: "\f002";
+  }
+  
+  /*--------------------------------------------------------------
+    Spacing Utilities
+  --------------------------------------------------------------*/
+  .py-2 {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  
+  /*--------------------------------------------------------------
+    Components
+  --------------------------------------------------------------*/
+  .box {
+    width: 300px;
+    margin: 1rem;
+  }
+  
+  .card {
+    background-color: var(--white);
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+  }
+  
+  .card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+  }
+  
+  .card-title {
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+    color: var(--accent-color);
+  }
+  
+  .card-text {
+    margin-bottom: 1rem;
+    color: #212529;
+  }
+  
+  .card-text:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Utility Classes */
+  .mb-4 {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .text-muted {
+    color: var(--text-muted) !important;
+  }
+  
+  .small-break {
+    height: 10px;
+    line-height: 10px;
+  }
+  

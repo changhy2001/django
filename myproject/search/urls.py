@@ -1,9 +1,9 @@
 from django.urls import path
-from . import views
+from .api_views import SearchAPIView, SearchDetailAPIView
 
-app_name = 'search'
+app_name = "search"
 
 urlpatterns = [
-    path('', views.search_view, name="search"),
-    path("user/<str:username>/", views.detail, name="detail"),
+    path('api/', SearchAPIView.as_view(), name='search_api'),
+    path('api/<str:username>/', SearchDetailAPIView.as_view(), name='search_detail_api'),
 ]
